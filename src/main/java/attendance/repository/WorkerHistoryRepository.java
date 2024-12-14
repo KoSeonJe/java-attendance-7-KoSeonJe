@@ -13,12 +13,6 @@ public class WorkerHistoryRepository {
 
     private final List<WorkerHistory> repository = new ArrayList<>();
 
-    private WorkerHistoryRepository() {
-        repository.add(new WorkerHistory("짱수",
-            new CustomTime("12", "11", "수요일"),
-            AttendanceStatus.ABSENCE));
-    }
-
     public static WorkerHistoryRepository getInstance() {
         return INSTANCE;
     }
@@ -42,6 +36,10 @@ public class WorkerHistoryRepository {
             .filter(workerHistory -> Objects.equals(workerHistory.getName(), nickName))
             .toList()
             .isEmpty();
+    }
+
+    public void clear() {
+        repository.clear();
     }
 
     public WorkerHistory findByNameAndDay(String nickName, int day) {

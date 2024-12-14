@@ -5,6 +5,7 @@ import attendance.domain.AttendanceStatus;
 import attendance.domain.CustomTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class WorkerHistoryParser {
 
@@ -25,13 +26,18 @@ public class WorkerHistoryParser {
 
             String[] dateTime = rawDateTime.split(" ");
             String rawDate = dateTime[0];
-            String rawTime = dateTime[1];
 
             String[] date = rawDate.split("-");
             String month = date[1];
             String day = date[2];
             String dayOfWeek = dayOfWeekService.getDayOfWeek(Integer.parseInt(day));
 
+            if (Objects.equals(dateTime[1], "null")) {
+                CustomTime customTime = new CustomTime(month, day, dayOfWeek);
+                workerHistories.add(new WorkerHistory(nickName, customTime, AttendanceStatus.ABSENCE));
+                continue;
+            }
+            String rawTime = dateTime[1];
             String[] time = rawTime.split(":");
             int hour = Integer.parseInt(time[0]);
             int minute = Integer.parseInt(time[1]);

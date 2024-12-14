@@ -4,7 +4,6 @@ import static attendance.common.ExceptionMessage.ILLEGAL_ERROR;
 
 import attendance.common.ActionConstant;
 import attendance.domain.CustomTime;
-import attendance.domain.Weeding;
 import attendance.domain.WorkerHistory;
 import attendance.service.AttendanceService;
 import attendance.service.DateService;

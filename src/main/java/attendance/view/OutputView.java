@@ -2,6 +2,7 @@ package attendance.view;
 
 import attendance.domain.WorkerHistory;
 import java.util.List;
+import java.util.Objects;
 
 public class OutputView {
 
@@ -47,6 +48,9 @@ public class OutputView {
             String hour = parseHour(workerHistory);
             String minute = parseMinute(workerHistory);
             String attendanceStatus = workerHistory.getAttendanceStatus().getStatus();
+            if (Integer.parseInt(day) >= 13) {
+                return;
+            }
             System.out.printf(CREATE_RESULT_MESSAGE + LINE_BREAKER, month, day, dayOfWeek, hour, minute, attendanceStatus);
         });
         println(LINE_BREAKER + "출석: " + attendanceResult.get(0) + "회");

@@ -22,8 +22,22 @@ public class DataInitializer {
     }
 
     public void initWorkHistory() {
+        workerHistoryRepository.clear();
         List<String> attendance = fileLoader.loadFile(fileName);
+        addNoAttendance(attendance);
         List<WorkerHistory> workerHistories = workerHistoryParser.toWorkers(attendance);
         workerHistoryRepository.saveAll(workerHistories);
+    }
+
+    private void addNoAttendance(List<String> attendance) {
+        attendance.add("짱수,2024-12-11 null");
+        attendance.add("이든,2024-12-05 null");
+        attendance.add("쿠키,2024-12-06 null");
+        attendance.add("빙티,2024-12-09 null");
+        attendance.add("이든,2024-12-11 null");
+        attendance.add("빙티,2024-12-11 null");
+        attendance.add("쿠키,2024-12-12 null");
+        attendance.add("빙티,2024-12-12 null");
+        attendance.add("짱수,2024-12-13 null");
     }
 }

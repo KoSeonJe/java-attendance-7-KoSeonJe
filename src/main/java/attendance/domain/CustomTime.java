@@ -14,7 +14,7 @@ public class CustomTime {
         this.dayOfWeek = dayOfWeek;
     }
 
-    public CustomTime(String month, String day, String dayOfWeek, int hour, int minute) {
+    public CustomTime(String month, String day, String dayOfWeek, Integer hour, Integer minute) {
         this.month = month;
         this.day = day;
         this.dayOfWeek = dayOfWeek;

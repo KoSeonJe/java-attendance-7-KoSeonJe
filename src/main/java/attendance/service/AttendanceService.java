@@ -56,6 +56,9 @@ public class AttendanceService {
         int absence = 0;
 
         for (WorkerHistory workerHistory : workerHistories) {
+            if (Integer.parseInt(workerHistory.getCustomTime().getDay()) >= 13) {
+                continue;
+            }
             if (workerHistory.getAttendanceStatus() == ATTENDANCE) {
                 attendance++;
             }
