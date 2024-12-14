@@ -62,6 +62,7 @@ public class AttendanceRecorder {
 
     private void getWeeding() {
 //        List<Weeding> weedings = workerHistoryService.getWeeding();
+        applicationView.printCurrentWeeding();
     }
 
     private void getCrewAttendance() {

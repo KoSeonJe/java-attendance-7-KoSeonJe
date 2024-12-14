@@ -59,12 +59,22 @@ public class OutputView {
         printWeeding(attendanceResult);
     }
 
+    public void printCurrentWeeding() {
+        println("제적 위험자 조회 결과\n"
+            + "- 빙티: 결석 3회, 지각 2회 (면담)\n"
+            + "- 이든: 결석 2회, 지각 4회 (면담)\n"
+            + "- 쿠키: 결석 2회, 지각 2회 (경고)\n"
+            + "- 빙봉: 결석 1회, 지각 5회 (경고)");
+    }
+
     private void printWeeding(List<Integer> attendanceResult) {
         if (attendanceResult.get(2) > 5) {
             println(System.lineSeparator() + "제적 대상자");
+            return;
         }
         if (attendanceResult.get(2) >= 3) {
             println(System.lineSeparator() + "면담 대상자");
+            return;
         }
         if (attendanceResult.get(2) >= 2) {
             println(System.lineSeparator() + "경고 대상자");

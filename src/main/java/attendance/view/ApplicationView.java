@@ -53,4 +53,8 @@ public class ApplicationView {
     public void printWorkerHistories(List<Integer> attendanceResult, List<WorkerHistory> workerHistories) {
         outputView.printWorkerHistories(attendanceResult, workerHistories);
     }
+
+    public void printCurrentWeeding() {
+        outputView.printCurrentWeeding();
+    }
 }
