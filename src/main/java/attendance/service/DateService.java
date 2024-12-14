@@ -1,11 +1,9 @@
-package attendance;
+package attendance.service;
 
 import attendance.domain.CustomTime;
-import attendance.service.DayOfWeekService;
 import camp.nextstep.edu.missionutils.DateTimes;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import net.bytebuddy.asm.Advice.Local;
 
 public class DateService {
 
