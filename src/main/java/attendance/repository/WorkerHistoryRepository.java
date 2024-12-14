@@ -19,6 +19,12 @@ public class WorkerHistoryRepository {
         return INSTANCE;
     }
 
+    public List<WorkerHistory> findByName(String nickName) {
+        return repository.stream()
+            .filter(workerHistory -> Objects.equals(workerHistory.getName(), nickName))
+            .toList();
+    }
+
     public void saveAll(List<WorkerHistory> workerHistories) {
         repository.addAll(workerHistories);
     }

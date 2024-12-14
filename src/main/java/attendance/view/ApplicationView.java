@@ -2,6 +2,7 @@ package attendance.view;
 
 import attendance.domain.CustomTime;
 import attendance.domain.WorkerHistory;
+import java.util.List;
 
 public class ApplicationView {
 
@@ -43,5 +44,13 @@ public class ApplicationView {
 
     public void printUpdateResult(WorkerHistory last, WorkerHistory update) {
         outputView.printUpdateResult(last, update);
+    }
+
+    public String inputGetNickName() {
+        return inputView.inputGetNickName();
+    }
+
+    public void printWorkerHistories(List<Integer> attendanceResult, List<WorkerHistory> workerHistories) {
+        outputView.printWorkerHistories(attendanceResult, workerHistories);
     }
 }

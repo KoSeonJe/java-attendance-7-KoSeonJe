@@ -1,12 +1,12 @@
 package attendance.service;
 
-import static attendance.common.ExceptionMessage.ILLEGAL_ERROR;
 import static attendance.common.ExceptionMessage.NOT_EXIST_NICKNAME;
 
 import attendance.domain.AttendanceStatus;
 import attendance.domain.CustomTime;
 import attendance.domain.WorkerHistory;
 import attendance.repository.WorkerHistoryRepository;
+import java.util.List;
 
 public class WorkerHistoryService {
 
@@ -39,13 +39,6 @@ public class WorkerHistoryService {
         }
         return workerHistory;
     }
-
-    private void validateNickName(String nickName) {
-        if (workerHistoryRepository.isEmpty(nickName)) {
-            throw new IllegalArgumentException(NOT_EXIST_NICKNAME);
-        }
-    }
-
     public WorkerHistory update(WorkerHistory last, String time) {
         int hour = dateService.getHour(time);
         int minute = dateService.getMinute(time);
@@ -58,4 +51,16 @@ public class WorkerHistoryService {
         workerHistoryRepository.remove(last);
         return update;
     }
+
+    public List<WorkerHistory> findByNickName(String nickName) {
+        validateNickName(nickName);
+        return workerHistoryRepository.findByName(nickName);
+    }
+
+    private void validateNickName(String nickName) {
+        if (workerHistoryRepository.isEmpty(nickName)) {
+            throw new IllegalArgumentException(NOT_EXIST_NICKNAME);
+        }
+    }
+
 }

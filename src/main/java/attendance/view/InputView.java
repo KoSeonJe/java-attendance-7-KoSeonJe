@@ -54,4 +54,9 @@ public class InputView {
         println(INPUT_UPDATE_TIME);
         return Console.readLine();
     }
+
+    public String inputGetNickName() {
+        println(INPUT_CREATE_NICKNAME);
+        return Console.readLine();
+    }
 }

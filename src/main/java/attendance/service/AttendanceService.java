@@ -4,6 +4,9 @@ import static attendance.domain.AttendanceStatus.*;
 
 import attendance.common.Month;
 import attendance.domain.AttendanceStatus;
+import attendance.domain.WorkerHistory;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class AttendanceService {
@@ -45,5 +48,24 @@ public class AttendanceService {
         }
 
         return ATTENDANCE;
+    }
+
+    public List<Integer> getAttendanceResult(List<WorkerHistory> workerHistories) {
+        int attendance = 0;
+        int perception = 0;
+        int absence = 0;
+
+        for (WorkerHistory workerHistory : workerHistories) {
+            if (workerHistory.getAttendanceStatus() == ATTENDANCE) {
+                attendance++;
+            }
+            if (workerHistory.getAttendanceStatus() == PERCEPTION) {
+                perception++;
+            }
+            if (workerHistory.getAttendanceStatus() == ABSENCE) {
+                absence++;
+            }
+        }
+        return new ArrayList<>(List.of(attendance, perception, absence));
     }
 }
