@@ -1,7 +1,7 @@
 package attendance.common;
 
 import attendance.AttendanceRecorder;
-import attendance.WorkerHistoryService;
+import attendance.service.WorkerHistoryService;
 import attendance.service.DateService;
 import attendance.infra.FileLoader;
 import attendance.repository.WorkerHistoryRepository;

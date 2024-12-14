@@ -1,11 +1,11 @@
-package attendance;
+package attendance.service;
+
+import static attendance.common.ExceptionMessage.NOT_EXIST_NICKNAME;
 
 import attendance.domain.AttendanceStatus;
 import attendance.domain.CustomTime;
 import attendance.domain.WorkerHistory;
 import attendance.repository.WorkerHistoryRepository;
-import attendance.service.AttendanceService;
-import attendance.service.DateService;
 
 public class WorkerHistoryService {
 
@@ -26,7 +26,14 @@ public class WorkerHistoryService {
         customTime.updateTime(hour, minute);
         AttendanceStatus attendanceStatus = attendanceService.judge(customTime.getDayOfWeek(), hour, minute);
         WorkerHistory workerHistory = WorkerHistory.create(nickName, customTime, attendanceStatus);
+        validateNickName(nickName);
         workerHistoryRepository.save(workerHistory);
         return workerHistory;
+    }
+
+    private void validateNickName(String nickName) {
+        if (workerHistoryRepository.isEmpty(nickName)) {
+            throw new IllegalArgumentException(NOT_EXIST_NICKNAME);
+        }
     }
 }

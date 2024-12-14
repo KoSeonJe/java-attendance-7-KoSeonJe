@@ -3,6 +3,7 @@ package attendance.repository;
 import attendance.domain.WorkerHistory;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class WorkerHistoryRepository {
 
@@ -24,5 +25,12 @@ public class WorkerHistoryRepository {
 
     public void save(WorkerHistory workerHistory) {
         repository.add(workerHistory);
+    }
+
+    public boolean isEmpty(String nickName) {
+        return repository.stream()
+            .filter(workerHistory -> Objects.equals(workerHistory.getName(), nickName))
+            .toList()
+            .isEmpty();
     }
 }

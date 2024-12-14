@@ -6,6 +6,7 @@ import attendance.common.ActionConstant;
 import attendance.domain.CustomTime;
 import attendance.domain.WorkerHistory;
 import attendance.service.DateService;
+import attendance.service.WorkerHistoryService;
 import attendance.view.ApplicationView;
 import java.util.Objects;
 
@@ -33,7 +34,7 @@ public class AttendanceRecorder {
             }
 
             if (Objects.equals(selectNumber, ActionConstant.UPDATE_NUMBER)) {
-
+                updateAttendance(customTime);
                 continue;
             }
 
@@ -47,6 +48,10 @@ public class AttendanceRecorder {
 
             throw new IllegalArgumentException(ILLEGAL_ERROR);
         }
+    }
+
+    private void updateAttendance(CustomTime customTime) {
+
     }
 
     private void createAttendance(CustomTime customTime) {
