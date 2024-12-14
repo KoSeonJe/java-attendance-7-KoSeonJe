@@ -51,7 +51,12 @@ public class AttendanceRecorder {
     }
 
     private void updateAttendance(CustomTime customTime) {
-
+        String nickName = applicationView.inputUpdateNickName();
+        int day = applicationView.inputUpdateDay();
+        String time = applicationView.inputUpdateTime();
+        WorkerHistory last = workerHistoryService.findByNameAndDay(nickName, day);
+        WorkerHistory update = workerHistoryService.update(last, time);
+        applicationView.printUpdateResult(last, update);
     }
 
     private void createAttendance(CustomTime customTime) {

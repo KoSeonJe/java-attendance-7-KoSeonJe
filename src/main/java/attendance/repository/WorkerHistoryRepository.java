@@ -33,4 +33,18 @@ public class WorkerHistoryRepository {
             .toList()
             .isEmpty();
     }
+
+    public WorkerHistory findByNameAndDay(String nickName, int day) {
+        return repository.stream()
+            .filter(workerHistory ->
+                Objects.equals(workerHistory.getName(), nickName) &&
+                    Integer.parseInt(workerHistory.getCustomTime().getDay()) == day
+            )
+            .findFirst()
+            .orElse(null);
+    }
+
+    public void remove(WorkerHistory last) {
+        repository.remove(last);
+    }
 }

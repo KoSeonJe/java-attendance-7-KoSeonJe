@@ -26,4 +26,8 @@ public class WorkerHistory {
     public static WorkerHistory create(String name, CustomTime customTime, AttendanceStatus attendanceStatus) {
         return new WorkerHistory(name, customTime, attendanceStatus);
     }
+
+    public void updateTime(int hour, int minute) {
+        customTime.updateTime(hour, minute);
+    }
 }

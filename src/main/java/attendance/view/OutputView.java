@@ -5,6 +5,7 @@ import attendance.domain.WorkerHistory;
 public class OutputView {
 
     private static final String CREATE_RESULT_MESSAGE = "%s월 %s일 %s %s:%s (%s)";
+    private static final String UPDATE_RESULT_MESSAGE = "%s월 %s일 %s %s:%s (%s) -> %s:%s (%s) 수정 완료!";
     private static final String LINE_BREAKER = System.lineSeparator();
 
     private void println(String message) {
@@ -20,6 +21,23 @@ public class OutputView {
         String attendanceStatus = workerHistory.getAttendanceStatus().getStatus();
         System.out.printf(CREATE_RESULT_MESSAGE + LINE_BREAKER, month, day, dayOfWeek, hour, minute, attendanceStatus);
 
+    }
+
+    public void printUpdateResult(WorkerHistory last, WorkerHistory update) {
+        String month = last.getCustomTime().getMonth();
+        String day = last.getCustomTime().getDay();
+        String dayOfWeek = last.getCustomTime().getDayOfWeek();
+        String hour = parseHour(last);
+        String minute = parseMinute(last);
+        String attendanceStatus = last.getAttendanceStatus().getStatus();
+
+        String updateHour = parseHour(update);
+        String updateMinute = parseMinute(update);
+        String updateAttendanceStatus = update.getAttendanceStatus().getStatus();
+        System.out.printf(UPDATE_RESULT_MESSAGE + LINE_BREAKER,
+            month, day, dayOfWeek, hour, minute, attendanceStatus,
+            updateHour, updateMinute, updateAttendanceStatus
+            );
     }
 
     private String parseHour(WorkerHistory workerHistory) {

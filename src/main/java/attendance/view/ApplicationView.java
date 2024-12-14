@@ -28,4 +28,20 @@ public class ApplicationView {
     public void printCreateResult(WorkerHistory workerHistory) {
         outputView.createCrateResult(workerHistory);
     }
+
+    public String inputUpdateNickName() {
+        return inputView.inputUpdateNickName();
+    }
+
+    public int inputUpdateDay() {
+        return Integer.parseInt(inputView.inputUpdateDay());
+    }
+
+    public String inputUpdateTime() {
+        return inputView.inputUpdateTime();
+    }
+
+    public void printUpdateResult(WorkerHistory last, WorkerHistory update) {
+        outputView.printUpdateResult(last, update);
+    }
 }
