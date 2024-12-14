@@ -28,9 +28,9 @@ public class WorkerHistoryParser {
             String rawTime = dateTime[1];
 
             String[] date = rawDate.split("-");
-            int month = Integer.parseInt(date[1]);
-            int day = Integer.parseInt(date[2]);
-            String dayOfWeek = dayOfWeekService.getDayOfWeek(day);
+            String month = date[1];
+            String day = date[2];
+            String dayOfWeek = dayOfWeekService.getDayOfWeek(Integer.parseInt(day));
 
             String[] time = rawTime.split(":");
             int hour = Integer.parseInt(time[0]);

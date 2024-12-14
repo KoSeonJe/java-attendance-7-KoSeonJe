@@ -1,15 +1,24 @@
 package attendance.common;
 
+import attendance.AttendanceRecorder;
+import attendance.DateService;
 import attendance.infra.FileLoader;
 import attendance.repository.WorkerHistoryRepository;
 import attendance.service.AttendanceService;
 import attendance.service.DayOfWeekService;
 import attendance.service.WorkerHistoryParser;
+import attendance.view.ApplicationView;
+import attendance.view.InputView;
+import attendance.view.OutputView;
 
 public class AttendanceConfig {
 
     public DataInitializer dataInitializer() {
         return new DataInitializer(new FileLoader(), workerHistoryRepository(), workerParser());
+    }
+
+    public AttendanceRecorder attendanceRecorder() {
+        return new AttendanceRecorder(applicationView(), dateService());
     }
 
     private WorkerHistoryRepository workerHistoryRepository() {
@@ -26,5 +35,13 @@ public class AttendanceConfig {
 
     private DayOfWeekService dayOfWeekService() {
         return new DayOfWeekService();
+    }
+
+    private ApplicationView applicationView() {
+        return new ApplicationView(new InputView(), new OutputView());
+    }
+
+    private DateService dateService() {
+        return new DateService();
     }
 }
