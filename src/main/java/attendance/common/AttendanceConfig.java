@@ -1,6 +1,7 @@
 package attendance.common;
 
 import attendance.AttendanceRecorder;
+import attendance.WorkerHistoryService;
 import attendance.service.DateService;
 import attendance.infra.FileLoader;
 import attendance.repository.WorkerHistoryRepository;
@@ -18,7 +19,7 @@ public class AttendanceConfig {
     }
 
     public AttendanceRecorder attendanceRecorder() {
-        return new AttendanceRecorder(applicationView(), dateService());
+        return new AttendanceRecorder(applicationView(), dateService(), workerHistoryService());
     }
 
     private WorkerHistoryRepository workerHistoryRepository() {
@@ -43,5 +44,9 @@ public class AttendanceConfig {
 
     private DateService dateService() {
         return new DateService(dayOfWeekService());
+    }
+
+    private WorkerHistoryService workerHistoryService() {
+        return new WorkerHistoryService(attendanceService(), dateService(), workerHistoryRepository());
     }
 }

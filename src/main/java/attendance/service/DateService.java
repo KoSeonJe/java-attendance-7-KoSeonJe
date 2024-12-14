@@ -1,5 +1,7 @@
 package attendance.service;
 
+import static attendance.common.ExceptionMessage.ILLEGAL_ERROR;
+
 import attendance.domain.CustomTime;
 import camp.nextstep.edu.missionutils.DateTimes;
 import java.time.LocalDate;
@@ -23,6 +25,22 @@ public class DateService {
         String day = parseToString(localDate.getDayOfMonth());
         String dayOfWeek = dayOfWeekService.getDayOfWeek(Integer.parseInt(day));
         return new CustomTime(month, day, dayOfWeek, 0, 0);
+    }
+
+    public int getHour(String time) {
+        int hour = Integer.parseInt(time.split(":")[0]);
+        if (hour < 0 || hour > 24) {
+            throw new IllegalArgumentException(ILLEGAL_ERROR);
+        }
+        return hour;
+    }
+
+    public int getMinute(String time) {
+        int minute = Integer.parseInt(time.split(":")[1]);
+        if (minute < 0 || minute > 59) {
+            throw new IllegalArgumentException(ILLEGAL_ERROR);
+        }
+        return minute;
     }
 
     private String parseToString(int value) {

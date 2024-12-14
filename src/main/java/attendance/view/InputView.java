@@ -14,6 +14,8 @@ public class InputView {
         """;
     private static final String NOW_TIME_SELECT_MESSAGE = "오늘은 %s월 %s일 %s입니다. 기능을 선택해 주세요.";
     private static final String LINE_BREAKER = System.lineSeparator();
+    private static final String INPUT_CREATE_NICKNAME = "닉네임을 입력해 주세요.";
+    private static final String INPUT_CREATE_DATETIME = "등교 시간을 입력해 주세요.";
 
 
 
@@ -24,7 +26,17 @@ public class InputView {
         return Console.readLine();
     }
 
+    public String inputCreateNickName() {
+        println(INPUT_CREATE_NICKNAME);
+        return Console.readLine();
+    }
+
     private void println(String message) {
         System.out.println(message);
+    }
+
+    public String inputCreateDateTime() {
+        println(INPUT_CREATE_DATETIME);
+        return Console.readLine();
     }
 }

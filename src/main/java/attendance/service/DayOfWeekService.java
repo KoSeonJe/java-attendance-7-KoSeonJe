@@ -15,6 +15,8 @@ public class DayOfWeekService {
         dayOfWeek12.put(4, WEDNESDAY.getDescription());
         dayOfWeek12.put(5, THURSDAY.getDescription());
         dayOfWeek12.put(6, FRIDAY.getDescription());
+        dayOfWeek12.put(0, SATURDAY.getDescription());
+        dayOfWeek12.put(1, SUNDAY.getDescription());
     }
 
     public String getDayOfWeek(int day) {

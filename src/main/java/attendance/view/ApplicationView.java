@@ -1,6 +1,7 @@
 package attendance.view;
 
 import attendance.domain.CustomTime;
+import attendance.domain.WorkerHistory;
 
 public class ApplicationView {
 
@@ -14,5 +15,17 @@ public class ApplicationView {
 
     public String selectAction(CustomTime nowTime) {
         return inputView.selectAction(nowTime);
+    }
+
+    public String inputCreateNickName() {
+        return inputView.inputCreateNickName();
+    }
+
+    public String inputCreateDateTime() {
+        return inputView.inputCreateDateTime();
+    }
+
+    public void printCreateResult(WorkerHistory workerHistory) {
+        outputView.createCrateResult(workerHistory);
     }
 }

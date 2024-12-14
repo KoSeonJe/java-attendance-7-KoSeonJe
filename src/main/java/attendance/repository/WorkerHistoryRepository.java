@@ -21,4 +21,8 @@ public class WorkerHistoryRepository {
     public void saveAll(List<WorkerHistory> workerHistories) {
         repository.addAll(workerHistories);
     }
+
+    public void save(WorkerHistory workerHistory) {
+        repository.add(workerHistory);
+    }
 }

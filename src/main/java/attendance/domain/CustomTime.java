@@ -35,4 +35,9 @@ public class CustomTime {
     public int getMinute() {
         return minute;
     }
+
+    public void updateTime(int hour, int minute) {
+        this.hour = hour;
+        this.minute = minute;
+    }
 }
