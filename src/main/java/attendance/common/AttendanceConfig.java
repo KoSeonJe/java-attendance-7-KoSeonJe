@@ -19,7 +19,7 @@ public class AttendanceConfig {
     }
 
     public AttendanceRecorder attendanceRecorder() {
-        return new AttendanceRecorder(applicationView(), dateService(), workerHistoryService());
+        return new AttendanceRecorder(applicationView(), dateService(), workerHistoryService(), attendanceService());
     }
 
     private WorkerHistoryRepository workerHistoryRepository() {

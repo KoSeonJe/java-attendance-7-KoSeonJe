@@ -42,8 +42,12 @@ public class AttendanceRecorder {
                 continue;
             }
 
-            if (Objects.equals(selectNumber, ActionConstant.WEEDING_NUMBER)) {
+            if (Objects.equals(selectNumber, ActionConstant.GET_NUMBER)) {
                 getCrewAttendance();
+                continue;
+            }
+
+            if (Objects.equals(selectNumber, ActionConstant.WEEDING_NUMBER)) {
                 continue;
             }
 

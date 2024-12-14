@@ -12,7 +12,6 @@ public class WorkerHistoryRepository {
     private final List<WorkerHistory> repository = new ArrayList<>();
 
     private WorkerHistoryRepository() {
-
     }
 
     public static WorkerHistoryRepository getInstance() {

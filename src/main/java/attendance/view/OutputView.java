@@ -61,9 +61,6 @@ public class OutputView {
 
     private String parseHour(WorkerHistory workerHistory) {
         int hour = workerHistory.getCustomTime().getHour();
-        if (hour == 0) {
-            return "--";
-        }
         if (hour < 10) {
             return "0" + hour;
         }
@@ -72,9 +69,6 @@ public class OutputView {
 
     private String parseMinute(WorkerHistory workerHistory) {
         int minute = workerHistory.getCustomTime().getMinute();
-        if (minute == 0) {
-            return "--";
-        }
         if (minute < 10) {
             return "0" + minute;
         }
