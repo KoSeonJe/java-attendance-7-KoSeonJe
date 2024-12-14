@@ -1,5 +1,7 @@
 package attendance.repository;
 
+import attendance.domain.AttendanceStatus;
+import attendance.domain.CustomTime;
 import attendance.domain.WorkerHistory;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +14,9 @@ public class WorkerHistoryRepository {
     private final List<WorkerHistory> repository = new ArrayList<>();
 
     private WorkerHistoryRepository() {
+        repository.add(new WorkerHistory("짱수",
+            new CustomTime("12", "11", "수요일"),
+            AttendanceStatus.ABSENCE));
     }
 
     public static WorkerHistoryRepository getInstance() {

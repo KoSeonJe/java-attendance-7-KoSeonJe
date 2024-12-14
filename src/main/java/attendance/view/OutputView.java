@@ -52,6 +52,19 @@ public class OutputView {
         println(LINE_BREAKER + "출석: " + attendanceResult.get(0) + "회");
         println("지각: " + attendanceResult.get(1) + "회");
         println("결석: " + attendanceResult.get(2) + "회");
+        printWeeding(attendanceResult);
+    }
+
+    private void printWeeding(List<Integer> attendanceResult) {
+        if (attendanceResult.get(2) > 5) {
+            println(System.lineSeparator() + "제적 대상자");
+        }
+        if (attendanceResult.get(2) >= 3) {
+            println(System.lineSeparator() + "면담 대상자");
+        }
+        if (attendanceResult.get(2) >= 2) {
+            println(System.lineSeparator() + "경고 대상자");
+        }
     }
 
     private void println(String message) {
@@ -60,7 +73,10 @@ public class OutputView {
 
 
     private String parseHour(WorkerHistory workerHistory) {
-        int hour = workerHistory.getCustomTime().getHour();
+        Integer hour = workerHistory.getCustomTime().getHour();
+        if (hour == null) {
+            return "--";
+        }
         if (hour < 10) {
             return "0" + hour;
         }
@@ -68,7 +84,10 @@ public class OutputView {
     }
 
     private String parseMinute(WorkerHistory workerHistory) {
-        int minute = workerHistory.getCustomTime().getMinute();
+        Integer minute = workerHistory.getCustomTime().getMinute();
+        if (minute == null) {
+            return "--";
+        }
         if (minute < 10) {
             return "0" + minute;
         }

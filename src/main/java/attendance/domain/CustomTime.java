@@ -5,8 +5,14 @@ public class CustomTime {
     private String month;
     private String day;
     private String dayOfWeek;
-    private int hour;
-    private int minute;
+    private Integer hour;
+    private Integer minute;
+
+    public CustomTime(String month, String day, String dayOfWeek) {
+        this.month = month;
+        this.day = day;
+        this.dayOfWeek = dayOfWeek;
+    }
 
     public CustomTime(String month, String day, String dayOfWeek, int hour, int minute) {
         this.month = month;
@@ -28,11 +34,11 @@ public class CustomTime {
         return dayOfWeek;
     }
 
-    public int getHour() {
+    public Integer getHour() {
         return hour;
     }
 
-    public int getMinute() {
+    public Integer getMinute() {
         return minute;
     }
 

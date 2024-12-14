@@ -4,6 +4,7 @@ import static attendance.common.ExceptionMessage.ILLEGAL_ERROR;
 
 import attendance.common.ActionConstant;
 import attendance.domain.CustomTime;
+import attendance.domain.Weeding;
 import attendance.domain.WorkerHistory;
 import attendance.service.AttendanceService;
 import attendance.service.DateService;
@@ -48,6 +49,7 @@ public class AttendanceRecorder {
             }
 
             if (Objects.equals(selectNumber, ActionConstant.WEEDING_NUMBER)) {
+                getWeeding();
                 continue;
             }
 
@@ -57,6 +59,10 @@ public class AttendanceRecorder {
 
             throw new IllegalArgumentException(ILLEGAL_ERROR);
         }
+    }
+
+    private void getWeeding() {
+//        List<Weeding> weedings = workerHistoryService.getWeeding();
     }
 
     private void getCrewAttendance() {
@@ -76,7 +82,9 @@ public class AttendanceRecorder {
     }
 
     private void createAttendance(CustomTime customTime) {
+        workerHistoryService.validateHoliday(customTime);
         String nickName = applicationView.inputCreateNickName();
+        workerHistoryService.validateNickName(nickName);
         String time = applicationView.inputCreateDateTime();
         WorkerHistory workerHistory = workerHistoryService.createWorkHistory(nickName, customTime, time);
         applicationView.printCreateResult(workerHistory);

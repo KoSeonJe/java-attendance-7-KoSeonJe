@@ -4,9 +4,12 @@ import static attendance.common.ExceptionMessage.NOT_EXIST_NICKNAME;
 
 import attendance.domain.AttendanceStatus;
 import attendance.domain.CustomTime;
+import attendance.domain.Weeding;
 import attendance.domain.WorkerHistory;
 import attendance.repository.WorkerHistoryRepository;
+import java.time.DayOfWeek;
 import java.util.List;
+import java.util.Objects;
 
 public class WorkerHistoryService {
 
@@ -57,10 +60,28 @@ public class WorkerHistoryService {
         return workerHistoryRepository.findByName(nickName);
     }
 
-    private void validateNickName(String nickName) {
+    public void validateNickName(String nickName) {
         if (workerHistoryRepository.isEmpty(nickName)) {
             throw new IllegalArgumentException(NOT_EXIST_NICKNAME);
         }
     }
 
+    public List<Weeding> getWeeding() {
+        return null;
+    }
+
+    public void validateHoliday(CustomTime customTime) {
+        if (Objects.equals(customTime.getDayOfWeek(), "토요일")
+            || Objects.equals(customTime.getDayOfWeek(), "일요일")
+            || Objects.equals(customTime.getDay(), "25")
+            ) {
+            throw new IllegalArgumentException("[ERROR] "
+                + customTime.getMonth()
+                + "월 "
+                + customTime.getDay()
+                + "일 "
+                + customTime.getDayOfWeek()
+                + "은 등교일이 아닙니다.");
+        }
+    }
 }
